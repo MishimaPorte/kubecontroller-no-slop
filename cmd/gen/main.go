@@ -22,17 +22,17 @@ func main() {
 	must(deepcopy.Generate(&dcargs.Args{
 		OutputFile: "zz_generated.deepcopy.go",
 	},
-		"kek/apis/supermodule/v1alpha1",
+		"kek/apis/modulepodset/v1alpha1",
 	))
 	must(clientset.Generate(&clargs.Args{
 		OutputDir: "generated",
 		OutputPkg: "kek/generated",
 		Groups: []types.GroupVersions{{
-			PackageName: "supermodules",
+			PackageName: "modulepodsets",
 			Group:       "sp.aps",
 			Versions: []types.PackageVersion{{
 				Version: "v1alpha1",
-				Package: "kek/apis/supermodule/v1alpha1",
+				Package: "kek/apis/modulepodset/v1alpha1",
 			}},
 		}},
 		ClientsetName:    "clientset",
@@ -44,7 +44,7 @@ func main() {
 		OutputDir:    "generated/listers",
 		OutputPkg:    "kek/generated/listers",
 		GoHeaderFile: "",
-	}, "kek/apis/supermodule/v1alpha1"))
+	}, "kek/apis/modulepodset/v1alpha1"))
 
 	must(informer.Generate(&infargs.Args{
 		OutputDir:                 "generated/informers",
@@ -52,5 +52,5 @@ func main() {
 		VersionedClientSetPackage: "kek/generated/clientset",
 		ListersPackage:            "kek/generated/listers",
 		SingleDirectory:           false,
-	}, "kek/apis/supermodule/v1alpha1"))
+	}, "kek/apis/modulepodset/v1alpha1"))
 }
